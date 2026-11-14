@@ -1,0 +1,35 @@
+# Private design references supplied to the team
+Imagenes de referencia1/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+.vite/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+.cache/
+tmp/
+
+# Editor and operating-system files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python cache used by local static-server tooling
+__pycache__/
+*.py[cod]

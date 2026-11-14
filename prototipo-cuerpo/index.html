@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#070f19"><title>SIMISA · Explorador corporal</title><link rel="stylesheet" href="styles.css"><script defer src="app.js"></script></head>
+<body>
+<header class="topbar"><a class="brand" href="#" aria-label="SIMISA, volver al cuerpo completo"><span class="brand-mark">S<span></span></span><span>SIMISA<small>HUMAN EXPLORER</small></span></a><div class="edition"><i></i> ESTUDIO DE MOVIMIENTO <span>01 / PROTOTIPO</span></div><button id="motion" class="quiet" aria-pressed="false">Reducir movimiento</button></header>
+<main>
+<aside class="sidebar"><div><p class="eyebrow">ANATOMÍA INTERACTIVA</p><h1>Explorá el<br>cuerpo humano<span>.</span></h1><p class="intro">Una perspectiva distinta<br>en cada acercamiento.</p></div>
+<nav aria-label="Regiones del cuerpo">
+<button class="region active" data-region="full" aria-pressed="true"><span class="number">00</span><span>Cuerpo completo<small>Vista general</small></span><span class="arrow">↗</span></button>
+<button class="region" data-region="head" aria-pressed="false"><span class="number">01</span><span>Cabeza<small>Región craneal</small></span><span class="arrow">↗</span></button>
+<button class="region" data-region="heart" aria-pressed="false"><span class="number">02</span><span>Corazón<small>Detalle del tórax</small></span><span class="arrow">↗</span></button>
+<button class="region" data-region="lungs" aria-pressed="false"><span class="number">03</span><span>Pulmones<small>Región torácica</small></span><span class="arrow">↗</span></button>
+<button class="region" data-region="abdomen" aria-pressed="false"><span class="number">04</span><span>Abdomen<small>Región abdominal</small></span><span class="arrow">↗</span></button>
+<button class="region" data-region="legs" aria-pressed="false"><span class="number">05</span><span>Piernas<small>Extremidades inferiores</small></span><span class="arrow">↗</span></button>
+</nav><div class="sidebar-note"><span class="note-line"></span><p>Ilustración anatómica conceptual.<br>Solo exploración visual.</p></div></aside>
+<section class="workspace" aria-label="Explorador anatómico">
+<div class="stage-heading"><div><span class="eyebrow">PERSPECTIVA FRONTAL</span><h2 id="region-title" aria-live="polite">Cuerpo completo</h2></div><span class="view-label">EXPLORAR / <span id="view-id">00</span></span></div>
+<div id="viewport" tabindex="0" aria-label="Cuerpo humano. Arrastrá para desplazar, usá la rueda para acercar o las flechas del teclado para mover.">
+<div class="grid"></div><div class="halo"></div><div class="axis axis-left"><span>SUPERIOR</span></div><div class="axis axis-right"><span>INFERIOR</span></div>
+<div id="scene"><img id="body-image" src="assets/cuerpo-holografico.png" alt="Ilustración frontal de cuerpo humano translúcido, con esqueleto y órganos visibles" draggable="false"><div id="hotspots"></div></div>
+<div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div><div id="loading" role="status">Preparando la ilustración…</div>
+</div>
+<div class="stage-bottom"><p class="help"><span>↔</span> Arrastrá para explorar <b>·</b> Rueda para acercar</p><div class="controls" aria-label="Controles de vista"><button id="zoom-out" aria-label="Alejar">−</button><output id="zoom-value" aria-label="Nivel de zoom">1.0×</output><button id="zoom-in" aria-label="Acercar">+</button><span class="divider"></span><button id="reset" class="reset" aria-label="Volver al cuerpo completo">↺ <span>Restablecer</span></button></div></div>
+</section></main><footer><span>SIMISA <span class="muted">/ SPACE APPS 2026</span></span><span>DEL CUERPO COMPLETO AL DETALLE</span><span class="muted">MODELO ILUSTRATIVO · 2D</span></footer>
+</body></html>

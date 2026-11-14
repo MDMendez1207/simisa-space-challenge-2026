@@ -1,0 +1,29 @@
+name: Feature request
+description: Propose a focused improvement to SIMISA
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or user need
+      description: What should the astronaut or presenter be able to accomplish?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed experience
+      description: Explain the smallest useful change.
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Intended status
+      options:
+        - Implemented behavior
+        - Simulated demo behavior
+        - Future concept
+    validations:
+      required: true
