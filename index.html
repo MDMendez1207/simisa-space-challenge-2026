@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#061224">
+  <meta name="description" content="SIMISA: prototipo de seguimiento de salud para misiones espaciales.">
+  <title>SIMISA · Panel de misión</title>
+  <link rel="stylesheet" href="web/styles.css">
+  <script src="web/app.js" defer></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="#inicio" class="brand" aria-label="SIMISA, inicio"><span
+        class="brand-icon">✦<i></i></span><span><strong>SIMISA</strong><small>Space Health Monitor</small></span></a>
+    <div class="crew"><span class="avatar">AT</span>
+      <div><b>Hola, Ana Torres</b><small>Astronauta · Misión de demostración</small></div>
+    </div>
+    <div class="connection"><span><i></i> Entorno de simulación</span><small id="clock"></small></div>
+    <button class="icon-button" data-panel="settings" aria-label="Abrir configuración"><span
+        data-icon="settings"></span></button>
+    <button class="avatar profile-button" data-panel="profile" aria-label="Ver perfil de Ana Torres">AT</button>
+  </header>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <nav aria-label="Navegación principal">
+        <button class="nav-item active" data-action="home" aria-current="page"><span
+            data-icon="home"></span><span>Inicio</span></button>
+        <button class="nav-item" data-action="body"><span data-icon="body"></span><span>Salud corporal</span></button>
+        <button class="nav-item" data-panel="sleep"><span data-icon="moon"></span><span>Sueño y descanso</span></button>
+        <button class="nav-item" data-panel="wellbeing"><span data-icon="flower"></span><span>Bienestar
+            psicológico</span></button>
+        <button class="nav-item" data-panel="devices"><span data-icon="sensor"></span><span>Estado de
+            sensores</span></button>
+        <button class="nav-item" data-panel="history"><span data-icon="chart"></span><span>Gráficas e
+            historial</span></button>
+        <button class="nav-item" data-panel="alerts"><span data-icon="alert"></span><span>Alertas</span><span
+            class="nav-count">2</span></button>
+        <button class="nav-item" data-panel="assistant"><span data-icon="assistant"></span><span>Asistente
+            inteligente</span></button>
+        <button class="nav-item" data-panel="information"><span data-icon="document"></span><span>Información
+            médica</span></button>
+        <button class="nav-item" data-panel="earth"><span data-icon="globe"></span><span>Comunicación con la
+            Tierra</span></button>
+        <button class="nav-item" data-panel="profile"><span data-icon="user"></span><span>Perfil de
+            tripulación</span></button>
+        <button class="nav-item" data-panel="settings"><span
+            data-icon="settings"></span><span>Configuración</span></button>
+      </nav>
+      <div class="sidebar-foot"><span class="demo-tag">DEMO</span><span>SPACE APPS 2026</span></div>
+    </aside>
+    <main>
+      <div class="page-intro">
+        <div><span class="eyebrow">TU SALUD, NUESTRA MISIÓN</span>
+          <h1>Panel de misión</h1>
+        </div><span class="demo-note"><i></i> Datos de ejemplo · Sin dispositivos reales</span>
+      </div>
+      <div class="dashboard">
+        <section class="panel health-panel" aria-labelledby="summary-title">
+          <div class="panel-heading">
+            <h2 id="summary-title">Resumen de salud</h2><span class="tiny-label">DEMO</span>
+          </div>
+          <div id="metrics" class="metrics"></div>
+          <p class="panel-footnote">Seleccioná un indicador para explorarlo.</p>
+        </section>
+        <section class="body-panel" aria-label="Explorador corporal interactivo">
+          <div class="body-heading"><span class="eyebrow">MAPA CORPORAL</span>
+            <h2 id="body-title" aria-live="polite">Una mirada a tu interior</h2>
+          </div>
+          <div id="body-stage" tabindex="0"
+            aria-label="Mapa corporal. Usá los botones para explorar corazón y pulmones. Escape vuelve al cuerpo completo.">
+            <div class="orbital orbit-one"></div>
+            <div class="orbital orbit-two"></div>
+            <div class="scan-grid"></div>
+            <div id="body-scene"><img id="anatomy" src="prototipo-cuerpo/assets/cuerpo-holografico.png"
+                alt="Ilustración conceptual frontal del cuerpo humano con órganos visibles" draggable="false"><button
+                class="hotspot heart-hotspot" data-region="heart" aria-label="Explorar corazón"></button><button
+                class="hotspot lung-hotspot" data-region="lungs" aria-label="Explorar pulmones"></button></div>
+            <button class="body-label label-heart" data-region="heart"><span
+                data-icon="heart"></span><span>Corazón<small>Cardiovascular</small></span><b>↗</b></button>
+            <button class="body-label label-lungs" data-region="lungs"><span
+                data-icon="lungs"></span><span>Pulmones<small>Respiración y oxígeno</small></span><b>↗</b></button>
+            <div class="platform"><i></i><i></i><i></i></div>
+            <p id="image-status" role="status" hidden></p>
+          </div>
+          <div class="body-controls"><button class="view-button selected" data-region="full" aria-pressed="true">Cuerpo
+              completo</button><button class="view-button" data-region="heart"
+              aria-pressed="false">Corazón</button><button class="view-button" data-region="lungs"
+              aria-pressed="false">Pulmones</button></div>
+          <p class="anatomy-note">Ilustración conceptual · Seleccioná una región</p>
+          <div id="region-detail" hidden><span id="region-description"></span><button class="text-button"
+              id="region-more">Ver indicadores →</button></div>
+        </section>
+        <aside class="right-column">
+          <section class="panel tracking-panel">
+            <div class="panel-heading">
+              <h2>Seguimiento diario</h2><span class="tiny-label">HOY</span>
+            </div>
+            <div class="progress-summary">
+              <div class="progress-ring" id="progress-ring">
+                <div><strong id="progress-count">0/3</strong><small>completados</small></div>
+              </div>
+              <div><span class="eyebrow">TU RUTINA</span>
+                <h3 id="routine-title">Un paso a la vez</h3>
+                <p>Completá tu registro<br>de bienestar de hoy.</p><button class="text-button"
+                  data-panel="wellbeing">Hacer check-in →</button>
+              </div>
+            </div>
+            <div class="trend-heading">
+              <h3>Frecuencia cardíaca</h3><button class="text-button" data-panel="history">Ver historial ↗</button>
+            </div>
+            <div class="chart-legend"><span><i></i> Ejemplo de tendencia</span><span>lpm · 7 días</span></div>
+            <div id="overview-chart" class="chart"></div>
+          </section>
+          <section class="panel alerts-panel">
+            <div class="panel-heading">
+              <h2><span data-icon="bell"></span> Actividad reciente</h2><button class="text-button"
+                data-panel="alerts">Ver todo →</button>
+            </div><button class="activity-row" data-panel="wellbeing"><span class="activity-icon amber"
+                data-icon="moon"></span><span>Registro diario pendiente<small>Completá sueño, ánimo y
+                  estrés</small></span><b>↗</b></button><button class="activity-row" data-panel="devices"><span
+                class="activity-icon" data-icon="sensor"></span><span>Fuentes de demostración<small>Lecturas de ejemplo
+                  disponibles</small></span><b>↗</b></button>
+            <div class="activity-note"><i></i> Esta demo no evalúa tu estado clínico.</div>
+          </section>
+        </aside>
+        <section class="panel quick-panel">
+          <div class="panel-heading">
+            <h2><span class="bolt">🗲</span> Accesos rápidos</h2><span class="tiny-label">TU ESPACIO PERSONAL</span>
+          </div>
+          <div class="quick-grid"><button data-panel="sleep"><span data-icon="moon"></span>Sueño y<br>descanso<span
+                class="quick-arrow">↗</span></button><button data-panel="wellbeing"><span
+                data-icon="flower"></span>Bienestar<br>psicológico<span class="quick-arrow">↗</span></button><button
+              data-panel="devices"><span data-icon="wifi"></span>Estado de<br>sensores<span
+                class="quick-arrow">↗</span></button><button data-panel="history"><span
+                data-icon="chart"></span>Gráficas e<br>historial<span class="quick-arrow">↗</span></button><button
+              data-panel="alerts"><span class="amber" data-icon="alert"></span>Alertas y<br>actividad<span
+                class="quick-arrow">↗</span></button><button data-panel="assistant"><span
+                data-icon="assistant"></span>Asistente<br>inteligente<span class="quick-arrow">↗</span></button></div>
+        </section>
+      </div>
+      <footer><span>SIMISA <span class="muted">/ SPACE HEALTH MONITOR</span></span><span>Explorar. Comprender.
+          Cuidar.</span><span class="muted">PROTOTIPO · 2026</span></footer>
+    </main>
+  </div>
+  <dialog id="detail-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-heading"><span class="eyebrow">SIMISA / ESPACIO PERSONAL</span><button id="close-dialog"
+        class="icon-button" aria-label="Cerrar panel">×</button></div>
+    <h2 id="dialog-title"></h2>
+    <div id="dialog-content"></div>
+  </dialog>
+  <div id="toast" role="status" hidden></div>
+</body>
+
+</html>

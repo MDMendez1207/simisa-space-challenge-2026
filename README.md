@@ -14,7 +14,9 @@ This repository is being developed during the **NASA Space Apps Challenge 2026**
 
 ## Current status
 
-The first working artifact is a browser-based body explorer focused exclusively on visual navigation:
+The reference-based dashboard is now available at the repository root (`index.html`). It includes animated body navigation, demo metric panels, a daily check-in saved in this browser, simulated device toggles, charts, and reduced-motion controls. Run `python -m http.server 4174 --bind 127.0.0.1` from the repository root and open http://127.0.0.1:4174. See [the dashboard implementation notes](docs/simisa/07-pantalla-principal.md). Dashboard content is currently in Spanish to follow the team's reference; English localization remains pending.
+
+The original body-only motion study remains available in `prototipo-cuerpo/`:
 
 - Full-body anatomical overview.
 - Animated transitions between selected regions.
